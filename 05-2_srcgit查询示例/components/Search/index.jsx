@@ -1,37 +1,33 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import PubSub from 'pubsub-js'
-import './index.css'
 
 export default class Search extends Component {
 
     search=()=>{
-        console.log("Search组件发布数据了")
-        
         // 获取用户输入（连续解构赋值+重命名）
         // const {value}=this.keywordElement
         // const {keywordElement:{value:keyword}}=this //解构赋值连续写法，并将value重命名为keyword
-        const {keywordElement:{value:keyword}}=this //解构赋值连续写法
+        const {keywordElement:{value}}=this //解构赋值连续写法
         // let obj={a:{b:{c:1}}}
         // const {a:{b:{c}}}=obj
         // console.log("js 解构赋值示例 ",c)
-        console.log("用户输入为",keyword)
-  
+        console.log("用户输入为",value)
+        // console.log("用户输入为",keyword)
+
+
         // 发送请求前通知APP更新状态
-        PubSub.publish('atguigu',{isFirst:false,isLoading:true})
+        this.props.updateAppState({isFirst:false,isLoading:true})
+
 
         // 发送网络请求
-        axios.get(`http://localhost:3000/api3/search/users?q=${keyword}`).then(
+        axios.get(`http://localhost:3000/api3/search/users?q=${value}`).then(
             response=>{
+                console.log('成功了',response.data);
+                // this.props.saveUsers(response.data.items)
                         // 请求成功后通知APP更新状态
-                PubSub.publish('atguigu',{isLoading:false,users:response.data.items})
-
+        this.props.updateAppState({isLoading:false,users:response.data.items})
         },
-            error=>{
-                console.log('失败了',error)
-                PubSub.publish('atguigu',{isLoading:false,err:error.message})
-
-        }
+            error=>{console.log('失败了',error)}
         )
     }
     // 后端解决跨域 cors
