@@ -5,3 +5,8 @@
 3、展示区写Route标签进行路由匹配
     <Route path='/***' component={Demo}></Route>
 4、<APP>最外侧包裹一个<BrowserRouter>或<HashRouter>
+
+5、NavLink与封装NavLink
+    （1）NavLink可实现路由链接的高亮，通过activeClassName指定样式名
+    （2）标签体内容是一个特殊的标签属性
+    （3）通过this.props.children可以获取标签体内容
