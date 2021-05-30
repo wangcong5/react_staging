@@ -12,7 +12,7 @@ export default class MyNavLink extends Component {
             <div>
                 {/* <NavLink activeClassName='mc' className="list-group-item" to={to}>{title}</NavLink> */}
                 <NavLink activeClassName='mc' className="list-group-item" {...this.props}></NavLink>
-Ò            </div>
+            </div>
         )
     }
 }
