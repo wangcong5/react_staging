@@ -13,7 +13,7 @@
     （1）通常情况下，path和component是一一对应关系
     （2）Switch可以提高路由的匹配效率（单一匹配）
 
-7、解决多级结构时，刷新页面样式丢失问题
+7、解决样式丢失问题
     <!-- <link rel="stylesheet" href="./css/bootstrap.css"> -->
     （1）引入样式时不写./ 直接写/（常用）
     <!-- <link rel="stylesheet" href="/css/bootstrap.css"> -->
