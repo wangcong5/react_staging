@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Home from './pages/Home'//路由组件
 import About from './pages/About'
 
@@ -23,8 +23,8 @@ export default class App extends Component {
                             <MyNavLink to='/a/home'>Home</MyNavLink> */}
 
                             {/* 路径后加了其他路径，只要前面匹配上就行 */}
-                            <MyNavLink to='/about'>About</MyNavLink>
-                            <MyNavLink to='/home'>Home</MyNavLink>
+                            <MyNavLink to='/about/b'>About</MyNavLink>
+                            <MyNavLink to='/home/a'>Home</MyNavLink>
 
                         </div>
                     </div>
@@ -40,7 +40,6 @@ export default class App extends Component {
                                     <Route exact path='/about' component={About} />
                                     {/* 不开启严格匹配，默认模糊匹配，除非特殊情况，一般模糊匹配就行 */}
                                     <Route path='/home' component={Home} />
-                                    <Redirect to='/home'/>
                                 </Switch>
                             </div>
                         </div>

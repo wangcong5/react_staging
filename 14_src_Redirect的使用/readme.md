@@ -25,3 +25,10 @@
     （1）默认使用的是模糊匹配（【输入的路径】必须要包含【匹配的路径】，且顺序一致）
     （2）开启严格匹配(true可以不写)：<Route exact={true} path='/about' component={About} />
     （3）严格匹配不要随便开启，需要再打开，否则可能导致无法匹配二级路由
+
+9、Redirect的使用
+    （1）一般写在路由注册的最下方，当所有路由都无法匹配时，跳转到Redirect指定的路由
+    （2）具体编码
+        <Route exact path='/about' component={About} />
+        <Route path='/home' component={Home} />
+        <Redirect to='/home'/>
